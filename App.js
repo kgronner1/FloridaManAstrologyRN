@@ -2,6 +2,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import Home from "./src/Home";
 import { NativeWindStyleSheet } from "nativewind";
+import { enGB, registerTranslation } from 'react-native-paper-dates'
+
+
+registerTranslation('en-GB', enGB);
 
 NativeWindStyleSheet.setOutput({
   default: "native",
