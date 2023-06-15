@@ -7,6 +7,7 @@ import CalendarPicker from './CalendarPicker';
 const PlayerSelect = () => {
     const [text, onChangeText] = useState('');
     const [link, onChangeLink] = useState('Link');
+    const [date, onChangeDate] = useState('Select a date.');
 
     return (
             <View className="flex flex-row items-center justify-center p-10 max-w-full gap-2.5 max-w-md">
@@ -18,11 +19,11 @@ const PlayerSelect = () => {
                     placeholder="Name"
                     value={text}
                     />
+                    <CalendarPicker/> 
                     <Text className="block w-full rounded-md px-3.5 py-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6">
                     {link}
                     </Text>
-                </View> 
-                <CalendarPicker/>              
+                </View>              
             </View>
     )
 }
