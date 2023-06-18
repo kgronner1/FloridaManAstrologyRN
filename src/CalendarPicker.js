@@ -1,11 +1,10 @@
 import React from "react";
 import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
-import { Button } from 'react-native-paper';
 import { DatePickerModal } from 'react-native-paper-dates';
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Ionicons } from '@expo/vector-icons'; 
 import { format } from 'date-fns';
-import { FlipInEasyX } from "react-native-reanimated";
+
 
 export default function CalendarPicker() {
   const [date, setDate] = React.useState(undefined);
@@ -34,9 +33,9 @@ export default function CalendarPicker() {
     <SafeAreaProvider>
       <View className="sm:leading-6 block w-full rounded-md px-3.5 py-2">
         <TouchableOpacity onPress={() => setOpen(true)} className="flex flex-row justify-center items-center">
-            <View style={calendarButtonStyles.calBut} className="flex flex-row justify-center items-center">
-              <Ionicons name="md-calendar-sharp" size={20} color="#ffffff" />
-            </View>
+          <View style={calendarButtonStyles.calBut} className="flex flex-row justify-center items-center">
+            <Ionicons name="md-calendar-sharp" size={20} color="#ffffff" />
+          </View>
             <Text className="block w-full rounded-md px-3.5 py-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6">
                     {
                     typeof date === "undefined" ?

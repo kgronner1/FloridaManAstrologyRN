@@ -6,11 +6,11 @@ import CalendarPicker from './CalendarPicker';
 
 const PlayerSelect = () => {
     const [text, onChangeText] = useState('');
-    const [link, onChangeLink] = useState('Link');
+    const [link, onChangeLink] = useState('');
     const [date, onChangeDate] = useState('Select a date.');
 
     return (
-            <View className="flex flex-row items-center justify-center p-10 max-w-full gap-2.5 max-w-md">
+            <View className="flex flex-row items-center justify-center px-20 max-w-full gap-2.5 max-w-md mt-10">
                 <UploadImage/> 
                 <View className="flex flex-column w-full gap-2.5">          
                     <TextInput
