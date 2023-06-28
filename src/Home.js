@@ -10,6 +10,17 @@ import ButtonGroup from './ButtonGroup';
 
 const Home = () => {
 
+  // default colors for player select
+  const [color, setColor] = useState({
+    "one":"#cc5eed",
+    "two":"#ffc0cb"
+  });
+
+  // Function to update the data
+  const updateColor = (key, value) => {
+    setColor(prevColor => ({ ...prevColor, [key]: value }));
+  };
+
     // default data
     const [data, setData] = useState({
         datasets: [
@@ -54,12 +65,14 @@ const Home = () => {
 
     return (
         <View className="container">
-            <PlayerSelect/>
-            <PlayerSelect/>
-            <Chart data={data}/>
+            <PlayerSelect color={color.one} updateColor={value => updateColor("one", value)} />
+            <PlayerSelect color={color.two} updateColor={value => updateColor("two", value)} />
+            <Chart data={data} color={color}/>
             <Compatibility data={data}/>
             <ButtonGroup onPressUpdate={updateData} />
         </View>
     )
+
+    
 }
 export default Home;

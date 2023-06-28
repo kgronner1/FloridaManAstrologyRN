@@ -4,11 +4,13 @@ import { VictoryAxis, VictoryBar, VictoryChart, VictoryGroup, VictoryTheme } fro
 
 const labels = ['🍑', '🔫', '🤡'];
 
-const Chart = ({data}) => {
+const Chart = ({data, color}) => {
+  console.log(color);
+
   return (
     <View >
       <VictoryChart theme={VictoryTheme.material} domain={{ y: [1, 5] }} >
-        <VictoryGroup offset={10} colorScale={['black', 'pink']}>
+        <VictoryGroup offset={10} colorScale={[color.one, color.two]}>
           {data.datasets.map((dataset, index) => (
             <VictoryBar
               key={index}
