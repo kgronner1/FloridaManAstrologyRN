@@ -2,16 +2,14 @@ import React from 'react';
 import {useState, useEffect} from "react";
 import {TextInput, View, Text, StyleSheet, Pressable, Platform, TouchableOpacity } from 'react-native';
 import UploadImage from './UploadImage';
-import CalendarPicker from './CalendarPicker';
+import DatePickCustom from './DatePickCustom';
 import ColorPalette from 'react-native-color-palette';
-
 
 const PlayerSelect = ({color, updateColor}) => {
     const [text, onChangeText] = useState('');
     const [link, onChangeLink] = useState('');
-    const [date, onChangeDate] = useState('Select a date.');
     const [open, setOpen] = useState(false);
-
+    const [date, onChangeDate] = useState('');
 
     const onConfirmSingle = React.useCallback(
         (params) => {
@@ -21,7 +19,7 @@ const PlayerSelect = ({color, updateColor}) => {
           // pass params to the parent
           updateColor(params); // Pass the desired color value as the parameter
 
-          console.log("get that date", params);
+          console.log("confirmsingle", params);
         },
         [setOpen]
       );
@@ -30,10 +28,14 @@ const PlayerSelect = ({color, updateColor}) => {
         (params) => {
           setOpen(!params);
           
-          console.log("get that date", params);
+          console.log("coloropen", params);
         },
         [setOpen]
       );
+
+        const handleDateChange = (newDate) => {
+          onChangeDate(newDate);
+        }
 
     const dynamicColor = { backgroundColor: color };
 
@@ -61,9 +63,8 @@ const PlayerSelect = ({color, updateColor}) => {
                     defaultColor={dynamicColor}
                     colors={['#C0392B', "#DEDEDE", '#000000', '#8E44AD', '#2980B9']}
                     />
-                    }
-
-                    <CalendarPicker/> 
+                    } 
+                    <DatePickCustom onDateChange={handleDateChange}/>                               
                     <Text className="block w-full rounded-md px-3.5 py-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6">
                     {link}
                     </Text>
@@ -82,4 +83,16 @@ const playerColorPicker=StyleSheet.create({
         borderRadius:999,
         overflow:'hidden',
     }    
+})
+
+const calendarButtonStyles=StyleSheet.create({
+  calBut:{
+      elevation:2,
+      height:35,
+      width:35,
+      backgroundColor:'#333333',
+      position:'relative',
+      borderRadius:999,
+      overflow:'hidden',
+  }    
 })

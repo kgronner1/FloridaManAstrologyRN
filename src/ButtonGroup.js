@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
 
 const ButtonGroup = ({ onPressUpdate }) => {
     return (
-      <View className='flex-row justify-center bottom-0 left-0 right-0 pb-8 mt-10'>
+      <View className='flex-row justify-center absolute bottom-0 left-0 right-0 bg-gray-200 p-4'>
         <TouchableOpacity onPress={onPressUpdate} style={ButtonStyles.grayBut} className='flex-1 mx-2 bg-blue-500 rounded-lg py-4'>
           <Text className='text-white text-center font-bold'>Regenerate</Text>
         </TouchableOpacity>

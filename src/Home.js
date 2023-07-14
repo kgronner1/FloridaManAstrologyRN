@@ -1,11 +1,10 @@
 import React from 'react';
-import {useState, useEffect} from "react";
-import {View, Platform, Button } from 'react-native';
+import {useState, useEffec} from "react";
+import {View, Platform, Button, ScrollView, StyleSheet, Image } from 'react-native';
 import PlayerSelect from './PlayerSelect';
 import Chart from './Chart';
 import Compatibility from './Compatibility';
 import ButtonGroup from './ButtonGroup';
-
 
 
 const Home = () => {
@@ -64,11 +63,17 @@ const Home = () => {
   
 
     return (
-        <View className="container">
-            <PlayerSelect color={color.one} updateColor={value => updateColor("one", value)} />
-            <PlayerSelect color={color.two} updateColor={value => updateColor("two", value)} />
-            <Chart data={data} color={color}/>
-            <Compatibility data={data}/>
+        <View className="flex-1">            
+            <ScrollView vertical showsHorizontalScrollIndicator={false}> 
+            {/* className="flex-1 w-100 min-w-screen flex flex-grow justify-center items-center p50" style={[structureStyles.min100vh, structureStyles.nightSky]}  */}
+            <Image style={{width:100,height:100}} source={require('/assets/nightsky1.png')}/>
+              <View className="flex-1 max-w-100 min-w-screen flex justify-center items-center" style={structureStyles.min100vh}>             
+                <PlayerSelect color={color.one} updateColor={value => updateColor("one", value)} />
+                <PlayerSelect color={color.two} updateColor={value => updateColor("two", value)} />
+                <Chart data={data} color={color}/>
+                <Compatibility data={data}/>
+              </View>
+            </ScrollView>
             <ButtonGroup onPressUpdate={updateData} />
         </View>
     )
@@ -76,3 +81,18 @@ const Home = () => {
     
 }
 export default Home;
+
+
+const structureStyles=StyleSheet.create({
+  min100vh:{
+      flex:1
+  },
+  nightSky: {
+    flex: 1,
+    itemsCenter:'center',
+    justifyContent: 'center',
+    width:100,
+    height:100,
+    zIndex:-1
+  },
+})

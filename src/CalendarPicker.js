@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { format } from 'date-fns';
 
 
-export default function CalendarPicker() {
+export default function CalendarPicker(props) {
   const [date, setDate] = React.useState(undefined);
   const [formattedDate, setFormattedDate] = React.useState("Select a date.");
   const [open, setOpen] = React.useState(false);
@@ -19,12 +19,13 @@ export default function CalendarPicker() {
     (params) => {
       setOpen(false);
       
-      const formattedDate = format(params.date, "MMMM d, yyyy");
+      const formattedDate = format(params.date, "mm/dd/yyyy");
       setFormattedDate(formattedDate);
 
       console.log("get that date", params.date, formattedDate);
 
       setDate(params.date);
+      props.onDateChange(formattedDate);
     },
     [setOpen, setDate]
   );
@@ -36,15 +37,15 @@ export default function CalendarPicker() {
           <View style={calendarButtonStyles.calBut} className="flex flex-row justify-center items-center">
             <Ionicons name="md-calendar-sharp" size={20} color="#ffffff" />
           </View>
-            <Text className="block w-full rounded-md px-3.5 py-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6">
+            {/* <Text className="block w-full rounded-md px-3.5 py-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6">
                     {
                     typeof date === "undefined" ?
                     "Select a date." : new String(formattedDate)
                     }
-            </Text>            
+            </Text>             */}
         </TouchableOpacity>
         <DatePickerModal
-          locale="en"
+          locale={"en"}
           mode="single"
           visible={open}
           onDismiss={onDismissSingle}

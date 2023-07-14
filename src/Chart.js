@@ -8,7 +8,7 @@ const Chart = ({data, color}) => {
   console.log(color);
 
   return (
-    <View >
+    <View className="max-w-full gap-2.5 max-w-md">
       <VictoryChart theme={VictoryTheme.material} domain={{ y: [1, 5] }} >
         <VictoryGroup offset={10} colorScale={[color.one, color.two]}>
           {data.datasets.map((dataset, index) => (
@@ -25,14 +25,15 @@ const Chart = ({data, color}) => {
           dependentAxis
           tickValues={[0, 1, 2, 3, 4, 5]} // Set the tick values for the Y-axis
           style={{
-            axis: { stroke: 'black' }, // Customize the Y-axis color
-            tickLabels: { fontSize: 12 },
+            axis: { stroke: '#ffffff' }, // Customize the Y-axis color
+            tickLabels: { fontSize: 12, fill:"#ffffff" },
           }}
         />
         <VictoryAxis
           tickValues={labels} // Set the x-axis tick values
           tickFormat={(tick) => tick} // Display the tick values as they are (optional)
           style={{
+            axis: { stroke: '#ffffff' },
             tickLabels: {
               fontSize: 40, // Set the desired font size here
             },

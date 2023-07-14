@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
 
 const Compatibility = ({ data }) => {
   const calculateCompatibilityPercentage = () => {
@@ -58,14 +58,14 @@ const Compatibility = ({ data }) => {
 
 
   return (
-    <View className="mt-20 mb-20 w-full flex items-center justify-items-center">
+    <View style={structureStyles.spacing} className="mt-100 pt-100 max-w-md flex items-center justify-items-center">
       <Text className="block w-full rounded-md px-3.5 py-2 text-gray-900 placeholder:text-gray-400 sm:text-sm sm:leading-6">
         Compatibility Level: 
       </Text>
-      <Text className={fullClassName}>
+      <Text style={structureStyles.mt30} className={fullClassName}>
         {compat}%
       </Text>
-      <Text>
+      <Text style={[structureStyles.mt30, structureStyles.colorWhite]}>
         {pith}
       </Text>
     </View>
@@ -73,3 +73,16 @@ const Compatibility = ({ data }) => {
 };
 
 export default Compatibility;
+
+const structureStyles=StyleSheet.create({
+  spacing:{
+      marginTop:100,
+      marginBottom:100
+  },
+  mt30:{
+    marginTop:30,
+  },
+  colorWhite: {
+    color:"#ffffff",
+  } 
+})
